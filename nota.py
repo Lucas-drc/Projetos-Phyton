@@ -1,5 +1,5 @@
 nota = float (input("Qual a nota do aluno? "))
-10
+
 if nota >=8 and nota <=10:
     print("O aluno atende ao indicador. Está aprovado!")
 
