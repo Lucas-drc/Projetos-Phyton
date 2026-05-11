@@ -1,4 +1,3 @@
-# Salva na memória uma variável nome frutas, inserindo uma lista de frutas
 frutas = ["manga", "banana", "abacaxi", "laranja", "uva"]
 
 # Entrada do usuário pedindo para digitar nome da fruta favorita
