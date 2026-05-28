@@ -18,6 +18,10 @@ while True:
     if escolha == "0":
         print(f"\nSaindo...")
         break
+    
+    if escolha not in ["1", "2", "3", "4", "0"]:
+        print(f"\nEscolha inválida! Tente novamente")
+        continue
 
     number1 = int(input(f"\nDigite o primeiro número: "))
     number2 = int(input(f"\nDigite o segundo número: "))
@@ -41,9 +45,12 @@ while True:
     elif escolha == "4":
         print(f"\nVocê escolheu divisão... Vamos lá!")
         if number2 == 0:
-            print(f"Essa altura do campeonato, e você fazendo isso!?")
+            print(f"""
+Essa altura do campeonato, e você fazendo isso!? 
+Não é possivel realizar essa operação!
+                  """)
         else:
             divisao = number1 / number2
             print(f"\nResultado da divisão = {divisao}")
-    else:
-        print(f"\nEscolha inválida! Tente novamente")
+
+        
