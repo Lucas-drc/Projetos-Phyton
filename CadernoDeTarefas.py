@@ -1,4 +1,3 @@
-
 def menu():
     print("\n===================")
     print("Menu:")
