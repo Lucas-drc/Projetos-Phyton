@@ -1,20 +1,24 @@
 class Aluno:
-    def __init__(self, nome, notas=[]):
+    def __init__(self, nome: str, notas: list):
         self.nome = nome
-        self.notas = notas
+        self.notas = notas if notas is not None else []
    
     def exibir(self):
-        print(f"Nome do aluno: {self.nome}")
-#        if self.notas:
-#           for ordem_nota, nota in enumerate(self.notas,1):
-#               print(f"Nota nº {ordem_nota}: {nota}")
+        print(f"Nome: {self.nome}")
+        if not self.notas:
+            print(f"Não possui notas lançadas")
+            return
+        
+        for ordem_nota, nota in enumerate(self.notas, start=1):
+                print(f"Nota nº {ordem_nota}: {nota}")
 
-#     def situacao(self):
-#        self.situacao = sum(self.notas)
-#        if self.situacao>= 6:
-#            print("Aluno aprovado!")
-#        elif self.situacao < 6:
-#           print("Aluno reprovado")
+    def situacao(self):
+        self.situacao = sum(self.notas)
+        media = sum(self.notas) / len(self.notas)
+        if media >= 6:
+            print(f"Aluno aprovado!Com média {media}")
+        elif media < 6:
+           print(f"Aluno reprovado!Com média {media}")
 
 
 
@@ -22,7 +26,7 @@ class Aluno:
 
 
 def exibir_menu():
-    print("=====================")
+    print("\n=====================")
     print("1 - Cadastrar aluno")
     print("2 - Lançar nota")
     print("3 - Ver situação")
@@ -33,27 +37,33 @@ def exibir_menu():
 def cadastrar_aluno():
     print("\nCADASTRANDO ALUNO...")
     nome = input("Digite o nome do aluno: ")
-    aluno = Aluno(nome)
+    aluno = Aluno(nome, [])
     alunos.append(aluno)
     print(f"Aluno {nome} cadastrado com sucesso!")
 
+
 def cadastrar_notas():
     print("\nCADASTRANDO NOTAS..")
-    indice = int(input("Digite o código do aluno: "))
-    aluno = alunos[indice]
+    codigo_aluno = int(input("Digite o código do aluno: ")) - 1
+    aluno = alunos[codigo_aluno]
     nota = float(input("Digite a nota: "))
     aluno.notas.append(nota)
     print(f"Nota {nota} lançada para o aluno {aluno.nome}")
 
+def exibir_diario():
+    codigo_aluno = int(input("Digite o código do aluno: ")) - 1
+    aluno = alunos[codigo_aluno]
+    aluno.situacao()
 
 
-
-def exibir_alunos():
+def listar_alunos():
     if not alunos:
-        print("Não há alunos cadastrados!")
+        print( "Não há alunos!")
         return
-    for aluno in alunos:
+    for codigo_aluno, aluno in enumerate (alunos, start=1):
+        print(f"\nCódigo aluno: {codigo_aluno}")
         aluno.exibir()
+
 
         
 alunos = []
@@ -70,6 +80,7 @@ while True:
     elif opcao =="3":
         exibir_diario()
     elif opcao =="4":
-        exibir_alunos()
+        listar_alunos()
     else:
         print("Opção inválida.")
+
