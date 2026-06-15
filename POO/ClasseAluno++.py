@@ -1,7 +1,7 @@
 class Aluno:
     def __init__(self, nome: str, notas: list):
         self.nome = nome
-        self.notas = notas if notas is not None else []
+        self.notas = notas 
    
     def exibir(self):
         print(f"Nome: {self.nome}")
